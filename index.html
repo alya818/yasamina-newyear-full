@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>yasamina - ياسمين happy new year</title>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -22,15 +21,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #0a1b2b, #1f3b5a);
+    background: linear-gradient(to bottom, #0b1f2c, #1f3b5a);
     position: relative;
 }
 
-/* Twinkling lights */
-@keyframes twinkle {
-    0%, 100% {opacity: 0.3;}
-    50% {opacity: 1;}
+/* خلفية كرسمس ديناميكية */
+@keyframes snow {
+    0% {transform: translateY(-10px);}
+    100% {transform: translateY(110vh);}
 }
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: #fff;
+    font-size: 10px;
+    animation: snow linear infinite;
+}
+
+@keyframes twinkle {
+    0%,100% {opacity:0.2;}
+    50% {opacity:1;}
+}
+
 .light {
     position: absolute;
     border-radius: 50%;
@@ -38,30 +51,24 @@ body {
     animation: twinkle 2s infinite ease-in-out;
 }
 
-/* Floating hearts */
+/* القلوب الطائرة عند الضغط */
 .heart {
     position: fixed;
     bottom: -20px;
     font-size: 22px;
-    animation: float 8s linear infinite;
+    animation: float 6s linear infinite;
     opacity: 0.8;
-    color: #FFD700; /* اصفر */
+    color: #FFD700;
 }
 
 @keyframes float {
-    from {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-110vh) translateX(40px);
-        opacity: 0;
-    }
+    0% {transform: translateY(0) translateX(0); opacity:1;}
+    100% {transform: translateY(-120vh) translateX(40px); opacity:0;}
 }
 
 .container {
     text-align: center;
-    z-index: 1;
+    z-index: 2;
 }
 
 .name {
@@ -71,22 +78,41 @@ body {
     text-shadow: 0 0 20px rgba(255,215,0,0.8);
 }
 
-/* Yellow Heart Button */
+/* القلب القابل للنقر */
+.magic-heart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: -30px;
+    margin-top: 10px;
+}
+
 .magic-heart {
     font-size: 120px;
     cursor: pointer;
-    color: #FFD700;
     transition: transform 0.3s;
 }
 
 .magic-heart:hover {
-    transform: scale(1.1);
+    transform: scale(1.15) rotate(-10deg);
+}
+
+.magic-heart.blue {
+    color: #00BFFF;
+    transform: translateX(-20px);
+}
+
+.magic-heart.yellow {
+    color: #FFD700;
+    transform: translateX(20px);
 }
 
 .hint {
-    font-size: 18px;
-    opacity: 0.8;
-    margin-top: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700;
+    margin-top: 20px;
 }
 
 .message {
@@ -123,11 +149,15 @@ body {
 <div class="container">
     <div class="name">✨ Yasemina ✨</div>
 
-    <div class="magic-heart" onclick="openMagic()">💛</div>
-    <div class="hint">اضغطي على القلب الأصفر 💛</div>
+    <div class="magic-heart-wrapper">
+        <div class="magic-heart yellow" onclick="openMagic()">💛</div>
+        <div class="magic-heart blue" onclick="openMagic()">💙</div>
+    </div>
+
+    <div class="hint">اضغط على القلب 💛💙</div>
 
     <div class="message" id="msg">
-        الئ فلفولة 💛<br><br>
+        الئ ياسمينتي <br><br>
         بهاي السنة الجديد 2026 راح يكتمل كلبي بوجودج وياي وبحياتي  
         بهاي السنة راح يكتمل حبي واكون اسرة وياج  
         بهاي السنه راح يكون الفرح والامل والقوه بوجودج بقربي  
@@ -138,7 +168,7 @@ body {
         اني الج ووياج كل سنه وكل يوم وكل ساعة  
         وكل دقيقة وكل لحظه  
         <br><br>
-        احبج 💛
+        احبج 
         <div class="signature">
             ابو علاوي وحرير 💛
         </div>
@@ -147,7 +177,7 @@ body {
 
 <script>
 // توليد أضواء متلألئة للخلفية
-for(let i=0;i<50;i++){
+for(let i=0;i<60;i++){
     let light = document.createElement("div");
     light.className = "light";
     light.style.width = light.style.height = Math.random()*8+3+"px";
@@ -157,16 +187,29 @@ for(let i=0;i<50;i++){
     document.body.appendChild(light);
 }
 
+// ثلوج صغيرة تتساقط
+const snowChars = ["❄","✼","❅","✻"];
+for(let i=0;i<40;i++){
+    let snow = document.createElement("div");
+    snow.className = "snowflake";
+    snow.style.left = Math.random()*100 + "vw";
+    snow.style.fontSize = (10+Math.random()*15)+"px";
+    snow.style.animationDuration = (5+Math.random()*5)+"s";
+    snow.innerText = snowChars[Math.floor(Math.random()*snowChars.length)];
+    document.body.appendChild(snow);
+}
+
 function openMagic() {
     document.getElementById("msg").style.display = "block";
     document.getElementById("music").play();
 
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 40; i++) {
         let h = document.createElement("div");
         h.className = "heart";
         h.innerText = "💛";
         h.style.left = Math.random() * 100 + "vw";
-        h.style.animationDuration = (5 + Math.random() * 5) + "s";
+        h.style.fontSize = (18 + Math.random()*20) + "px";
+        h.style.animationDuration = (4 + Math.random()*4) + "s";
         document.body.appendChild(h);
 
         setTimeout(() => h.remove(), 9000);
