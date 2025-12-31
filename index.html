@@ -11,29 +11,41 @@
 <style>
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    background: url('https://i.ibb.co/Tk7V6Cg/christmas-background.jpg') no-repeat center center fixed;
-    background-size: cover;
     font-family: 'Cairo', sans-serif;
-    color: #fff;
+    overflow-x: hidden;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    background: linear-gradient(to bottom, #0a1b2b, #1f3b5a);
+    position: relative;
 }
 
-/* floating hearts */
+/* Twinkling lights */
+@keyframes twinkle {
+    0%, 100% {opacity: 0.3;}
+    50% {opacity: 1;}
+}
+.light {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #FFD700;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+/* Floating hearts */
 .heart {
     position: fixed;
     bottom: -20px;
     font-size: 22px;
     animation: float 8s linear infinite;
     opacity: 0.8;
-    color: #FFD700;
+    color: #FFD700; /* اصفر */
 }
 
 @keyframes float {
@@ -48,10 +60,8 @@ body {
 }
 
 .container {
-    width: 100%;
-    max-width: 420px;
-    padding: 20px;
     text-align: center;
+    z-index: 1;
 }
 
 .name {
@@ -61,21 +71,22 @@ body {
     text-shadow: 0 0 20px rgba(255,215,0,0.8);
 }
 
-.magic-image {
-    width: 220px;
-    max-width: 80%;
-    margin: 25px auto;
+/* Yellow Heart Button */
+.magic-heart {
+    font-size: 120px;
     cursor: pointer;
-    transition: transform 0.4s;
+    color: #FFD700;
+    transition: transform 0.3s;
 }
 
-.magic-image:hover {
-    transform: scale(1.07);
+.magic-heart:hover {
+    transform: scale(1.1);
 }
 
 .hint {
     font-size: 18px;
     opacity: 0.8;
+    margin-top: 10px;
 }
 
 .message {
@@ -87,6 +98,7 @@ body {
     font-size: 22px;
     line-height: 2.1;
     animation: fadeIn 1.2s ease forwards;
+    color: #FFD700;
 }
 
 @keyframes fadeIn {
@@ -102,7 +114,6 @@ body {
 }
 </style>
 </head>
-
 <body>
 
 <audio id="music" loop>
@@ -112,17 +123,11 @@ body {
 <div class="container">
     <div class="name">✨ Yasemina ✨</div>
 
-    <!-- Harry Potter Image -->
-    <img
-      src="https://i.ibb.co/W3tG9Pz/harry-potter.png"
-      class="magic-image"
-      onclick="openMagic()"
-      alt="Harry Potter">
-
-    <div class="hint">اضغطي على صورة هاري بوتر 🪄</div>
+    <div class="magic-heart" onclick="openMagic()">💛</div>
+    <div class="hint">اضغطي على القلب الأصفر 💛</div>
 
     <div class="message" id="msg">
-        الئ فلفولة <br><br>
+        الئ فلفولة 💛<br><br>
         بهاي السنة الجديد 2026 راح يكتمل كلبي بوجودج وياي وبحياتي  
         بهاي السنة راح يكتمل حبي واكون اسرة وياج  
         بهاي السنه راح يكون الفرح والامل والقوه بوجودج بقربي  
@@ -141,6 +146,17 @@ body {
 </div>
 
 <script>
+// توليد أضواء متلألئة للخلفية
+for(let i=0;i<50;i++){
+    let light = document.createElement("div");
+    light.className = "light";
+    light.style.width = light.style.height = Math.random()*8+3+"px";
+    light.style.top = Math.random()*100 + "vh";
+    light.style.left = Math.random()*100 + "vw";
+    light.style.animationDuration = (Math.random()*3+1) + "s";
+    document.body.appendChild(light);
+}
+
 function openMagic() {
     document.getElementById("msg").style.display = "block";
     document.getElementById("music").play();
@@ -148,7 +164,7 @@ function openMagic() {
     for (let i = 0; i < 35; i++) {
         let h = document.createElement("div");
         h.className = "heart";
-        h.innerText = "❤️";
+        h.innerText = "💛";
         h.style.left = Math.random() * 100 + "vw";
         h.style.animationDuration = (5 + Math.random() * 5) + "s";
         document.body.appendChild(h);
