@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Magic New Year ✨ Yasemina</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #1b0036, #000);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    color: #fff;
+}
+
+/* stars */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    opacity: 0.8;
+    animation: twinkle 4s infinite;
+}
+@keyframes twinkle {
+    0%,100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+.container {
+    text-align: center;
+    z-index: 2;
+}
+
+.magic-name {
+    font-size: 36px;
+    color: gold;
+    letter-spacing: 2px;
+    animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+    from { text-shadow: 0 0 10px gold; }
+    to { text-shadow: 0 0 25px gold; }
+}
+
+.gift-box {
+    width: 220px;
+    height: 220px;
+    margin: 40px auto;
+    position: relative;
+    cursor: pointer;
+    perspective: 800px;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg,#6a2ca0,#2d0b52);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,215,0,0.6);
+    position: absolute;
+}
+
+.lid {
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(145deg,#8b3bc9,#3b0f6b);
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    top: 0;
+    transform-origin: top;
+    transition: transform 1s;
+}
+
+.ribbon-h, .ribbon-v {
+    position: absolute;
+    background: gold;
+}
+.ribbon-h {
+    width: 100%;
+    height: 14px;
+    top: 50%;
+}
+.ribbon-v {
+    width: 14px;
+    height: 100%;
+    left: 50%;
+}
+
+.message {
+    display: none;
+    max-width: 460px;
+    margin-top: 30px;
+    background: rgba(0,0,0,0.7);
+    padding: 25px;
+    border-radius: 18px;
+    line-height: 2;
+    animation: fadeIn 1.5s ease forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.signature {
+    margin-top: 20px;
+    color: gold;
+    font-weight: bold;
+}
+
+.note {
+    font-size: 14px;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- music -->
+<audio id="music" loop>
+  <source src="https://files.catbox.moe/5c7p2x.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <div class="magic-name">✨ Yasemina ✨</div>
+
+    <div class="gift-box" onclick="openGift()">
+        <div class="lid" id="lid"></div>
+        <div class="box">
+            <div class="ribbon-h"></div>
+            <div class="ribbon-v"></div>
+        </div>
+    </div>
+
+    <div class="note">🎁 اضغطي على الهدية – Hogwarts Magic</div>
+
+    <div class="message" id="msg">
+        الئ فلفولة <br><br>
+        بهاي السنة الجديد 2026 راح يكتمل كلبي بوجودج وياي وبحياتي  
+        بهاي السنة راح يكتمل حبي واكون اسرة وياج  
+        بهاي السنه راح يكون الفرح والامل والقوه بوجودج بقربي  
+        <br><br>
+        حبيتج البارحة ب2025 واحبج اليوم ب 2026  
+        وراح احبج باجر وبكل السنين الجاية  
+        <br><br>
+        اني الج ووياج كل سنه وكل يوم وكل ساعة  
+        وكل دقيقة وكل لحظه  
+        <br><br>
+        احبج
+        <div class="signature">
+            ابو علاوي وحرير ❤️
+        </div>
+    </div>
+</div>
+
+<script>
+/* stars */
+for(let i=0;i<120;i++){
+    let s=document.createElement("div");
+    s.className="star";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    s.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(s);
+}
+
+function openGift(){
+    document.getElementById("lid").style.transform="rotateX(120deg)";
+    document.getElementById("msg").style.display="block";
+    document.getElementById("music").play();
+}
+</script>
+
+</body>
+</html>
