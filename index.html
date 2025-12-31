@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yasemina ✨ 2026</title>
+<title>yasamina - ياسمين happy new year</title>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -16,8 +16,9 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background: radial-gradient(circle at top, #1a0933, #000);
-    font-family: 'Amiri', serif;
+    background: url('https://i.imgur.com/3mE2g7D.jpg') no-repeat center center fixed; /* خلفية كرسمس */
+    background-size: cover;
+    font-family: 'Cairo', sans-serif;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -32,6 +33,7 @@ body {
     font-size: 22px;
     animation: float 8s linear infinite;
     opacity: 0.8;
+    color: #FFD700; /* لون القلوب أصفر */
 }
 
 @keyframes float {
@@ -53,14 +55,13 @@ body {
 }
 
 .name {
-    font-family: 'Playfair Display', serif;
     font-size: 40px;
     color: gold;
     margin-bottom: 20px;
     text-shadow: 0 0 20px rgba(255,215,0,0.8);
 }
 
-.hat {
+.magic-image {
     width: 220px;
     max-width: 80%;
     margin: 25px auto;
@@ -68,7 +69,7 @@ body {
     transition: transform 0.4s;
 }
 
-.hat:hover {
+.magic-image:hover {
     transform: scale(1.07);
 }
 
@@ -100,28 +101,25 @@ body {
     font-size: 22px;
 }
 </style>
-  
-
 </head>
 
 <body>
 
-<audio id="music">
+<audio id="music" loop>
     <source src="https://archive.org/download/harry-potter-theme-song/harry-potter-theme-song.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
     <div class="name">✨ Yasemina ✨</div>
 
-    <!-- Harry Potter Hat -->
+    <!-- Harry Potter Image -->
     <img
-     <div class="hat" onclick="openMagic()">
-  <div class="hat-top"></div>
-  <div class="hat-brim"></div>
-</div>
+      src="https://i.pinimg.com/originals/45/93/46/4593460632500577536.jpg"
+      class="magic-image"
+      onclick="openMagic()"
+      alt="Harry Potter">
 
-
-    <div class="hint">اضغطي على قبعة السحر 🎩</div>
+    <div class="hint">اضغطي على صورة هاري بوتر 🪄</div>
 
     <div class="message" id="msg">
         الئ فلفولة <br><br>
@@ -135,7 +133,7 @@ body {
         اني الج ووياج كل سنه وكل يوم وكل ساعة  
         وكل دقيقة وكل لحظه  
         <br><br>
-        احبج ياسمين
+        احبج 💛
         <div class="signature">
             ابو علاوي وحرير 💛
         </div>
@@ -162,6 +160,3 @@ function openMagic() {
 
 </body>
 </html>
-
-
-
