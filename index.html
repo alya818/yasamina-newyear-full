@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yasemina ✨ 2026</title>
+<title>Yasemina happy new year  ✨ 2026</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
@@ -100,6 +100,37 @@ body {
     font-size: 22px;
 }
 </style>
+    .hat {
+    width: 160px;
+    height: 180px;
+    margin: 25px auto;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s;
+}
+
+.hat:hover {
+    transform: scale(1.08);
+}
+
+.hat-top {
+    width: 100px;
+    height: 130px;
+    background: #000;
+    margin: 0 auto;
+    border-radius: 10px 10px 20px 20px;
+    box-shadow: 0 0 20px rgba(255,215,0,0.5);
+}
+
+.hat-brim {
+    width: 160px;
+    height: 25px;
+    background: #000;
+    margin: -10px auto 0;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(255,215,0,0.6);
+}
+
 </head>
 
 <body>
@@ -113,10 +144,11 @@ body {
 
     <!-- Harry Potter Hat -->
     <img
-      src="https://i.imgur.com/9yG6W6y.png"
-      class="hat"
-      onclick="openMagic()"
-      alt="Magic Hat">
+     <div class="hat" onclick="openMagic()">
+  <div class="hat-top"></div>
+  <div class="hat-brim"></div>
+</div>
+
 
     <div class="hint">اضغطي على قبعة السحر 🎩</div>
 
@@ -132,7 +164,7 @@ body {
         اني الج ووياج كل سنه وكل يوم وكل ساعة  
         وكل دقيقة وكل لحظه  
         <br><br>
-        احبج 💛
+        احبج ياسمين
         <div class="signature">
             ابو علاوي وحرير 💛
         </div>
@@ -159,3 +191,4 @@ function openMagic() {
 
 </body>
 </html>
+
